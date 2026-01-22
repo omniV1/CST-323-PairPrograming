@@ -32,6 +32,7 @@ public class SecurityConfig {
             )
             .formLogin(form -> form
                 .loginPage("/users/login")
+                .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/orders", true)
                 .permitAll()
             )
