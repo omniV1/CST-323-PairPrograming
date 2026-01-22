@@ -13,47 +13,126 @@
             padding: 0;
         }
         .navbar-custom {
-            background: white;
-            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            min-height: 60px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
         }
         .navbar-brand {
-            font-weight: 500;
-            color: #333;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #7c3aed;
             text-decoration: none;
+            letter-spacing: -0.3px;
         }
-        .navbar-nav {
+        .hamburger {
             display: flex;
-            align-items: center;
-            gap: 20px;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 6px;
+            transition: background 0.2s ease;
+        }
+        .hamburger:hover {
+            background: rgba(124, 58, 237, 0.08);
+        }
+        .hamburger span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: #64748b;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        .nav-menu {
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            padding: 8px;
+            min-width: 180px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.2s ease;
+        }
+        .nav-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
         }
         .nav-link {
-            color: #666;
+            color: #64748b;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.875rem;
+            font-weight: 500;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 10px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            background: transparent;
         }
         .nav-link:hover {
-            color: #9c27b0;
+            color: #7c3aed;
+            background: rgba(124, 58, 237, 0.08);
+        }
+        .nav-link i {
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
         }
         .logout-btn {
-            background: none;
+            background: #fef2f2;
             border: none;
-            color: #666;
-            font-size: 0.9rem;
+            color: #dc2626;
+            font-size: 0.875rem;
+            font-weight: 500;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 5px;
-            padding: 0;
+            gap: 10px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            width: 100%;
+            margin-top: 4px;
         }
         .logout-btn:hover {
-            color: #f44336;
+            background: #fee2e2;
+        }
+        .logout-btn i {
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
+        }
+        .menu-divider {
+            height: 1px;
+            background: #e5e7eb;
+            margin: 8px 0;
         }
         .main-content {
             padding: 30px 40px;
@@ -136,14 +215,32 @@
 <body>
     <nav class="navbar-custom">
         <a href="/orders" class="navbar-brand">Orders4U</a>
-        <div class="navbar-nav">
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-menu" id="navMenu">
             <a th:href="@{/orders}" class="nav-link"><i class="bi bi-box-seam"></i> Inventory</a>
             <a th:href="@{/admin}" class="nav-link" sec:authorize="hasRole('ADMIN')"><i class="bi bi-gear"></i> Admin</a>
+            <div class="menu-divider"></div>
             <form th:action="@{/logout}" method="post" style="margin: 0;">
                 <button type="submit" class="logout-btn"><i class="bi bi-box-arrow-right"></i> Logout</button>
             </form>
         </div>
     </nav>
+    <script>
+        function toggleMenu() {
+            document.querySelector('.hamburger').classList.toggle('active');
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.hamburger') && !e.target.closest('.nav-menu')) {
+                document.querySelector('.hamburger').classList.remove('active');
+                document.getElementById('navMenu').classList.remove('active');
+            }
+        });
+    </script>
     <div class="main-content">
         <div class="order-panel">
             <div class="panel-title">Edit Order</div>
