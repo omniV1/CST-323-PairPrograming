@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e0f7fa 0%, #e1bee7 100%);
+            margin: 0;
+            padding: 0;
+        }
+        .navbar-custom {
+            background: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .navbar-url {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .navbar-center {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            color: #333;
+        }
+        .navbar-center i {
+            font-size: 1.2rem;
+        }
+        .navbar-icons {
+            display: flex;
+            gap: 15px;
+        }
+        .navbar-icons a {
+            color: #666;
+            font-size: 1.2rem;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .navbar-icons a:hover {
+            color: #9c27b0;
+        }
+        .main-content {
+            padding: 30px 40px;
+        }
+        .users-panel {
+            background: rgba(100, 80, 120, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: 500;
+        }
+        .panel-header-icons {
+            display: flex;
+            gap: 10px;
+        }
+        .panel-header-icons i {
+            cursor: pointer;
+            color: #666;
+        }
+        .user-row {
+            background: #f8f0c8;
+            border-radius: 8px;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #f8bbd9 0%, #ce93d8 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        .user-details {
+            display: flex;
+            flex-direction: column;
+        }
+        .user-name {
+            font-weight: 500;
+            color: #333;
+            font-size: 0.95rem;
+        }
+        .user-role {
+            font-size: 0.75rem;
+            color: #666;
+        }
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .action-btn {
+            font-size: 0.8rem;
+            color: #666;
+            cursor: pointer;
+            text-decoration: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .action-btn:hover {
+            background: rgba(0,0,0,0.05);
+            color: #333;
+        }
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-left: 10px;
+        }
+        .status-active {
+            background: #4caf50;
+        }
+        .status-inactive {
+            background: #f44336;
+        }
+        .status-label {
+            font-size: 0.75rem;
+            color: #666;
+            margin-right: 5px;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .back-link:hover {
+            color: #9c27b0;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <a th:href="@{/orders}" class="back-link">
+            <i class="bi bi-arrow-left"></i>
+            Back to Inventory
+        </a>
+
+        <div class="users-panel">
+            <div class="panel-header">
+                <span>Users</span>
+                <div class="panel-header-icons">
+                    <i class="bi bi-grid"></i>
+                    <i class="bi bi-list"></i>
+                </div>
+            </div>
+
+            <div th:each="user : ${users}" class="user-row">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <span th:text="${#strings.toUpperCase(#strings.substring(user.username, 0, 1))}">A</span>
+                    </div>
+                    <div class="user-details">
+                        <span class="user-name" th:text="${user.username}">User Name</span>
+                        <span class="user-role" th:text="${user.role}">Role</span>
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <a th:href="@{/admin/editUser/{id}(id=${user.id})}" class="action-btn">Edit</a>
+                    <a th:href="@{/admin/deleteUser/{id}(id=${user.id})}" class="action-btn" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
+                    <span class="status-label">Status</span>
+                    <a th:href="@{/admin/toggleUser/{id}(id=${user.id})}" style="text-decoration: none;">
+                        <div th:classappend="${user.enabled} ? 'status-active' : 'status-inactive'" class="status-indicator"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
