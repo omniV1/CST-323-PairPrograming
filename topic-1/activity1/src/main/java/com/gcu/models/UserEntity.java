@@ -1,8 +1,7 @@
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
+package com.gcu.models;
 
-import org.springframework.data.annotation.Entity;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 @Table("USERS")
 public class UserEntity {
