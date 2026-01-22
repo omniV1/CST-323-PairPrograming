@@ -39,9 +39,17 @@ public class AdminController {
     }
 
     @PostMapping("/updateUser")
-    public String updateUser(@ModelAttribute UserEntity user) {
+    public String updateUser(@ModelAttribute UserEntity user, Principal principal, Model model) {
         UserEntity existingUser = usersRepository.findById(user.getId()).orElse(null);
         if (existingUser != null) {
+            // Prevent admin from demoting themselves
+            boolean isSelf = existingUser.getUsername().equals(principal.getName());
+            boolean isDemotion = existingUser.getRole().equals("ROLE_ADMIN") && !user.getRole().equals("ROLE_ADMIN");
+            if (isSelf && isDemotion) {
+                model.addAttribute("user", existingUser);
+                model.addAttribute("error", "You cannot demote yourself");
+                return "editUser";
+            }
             existingUser.setUsername(user.getUsername());
             existingUser.setRole(user.getRole());
             existingUser.setEnabled(user.isEnabled());
@@ -62,7 +70,12 @@ public class AdminController {
     }
 
     @GetMapping("/deleteUser/{id}")
-    public String deleteUser(@PathVariable("id") int id) {
+    public String deleteUser(@PathVariable("id") int id, Principal principal) {
+        UserEntity user = usersRepository.findById(id).orElse(null);
+        // Prevent admin from deleting themselves
+        if (user != null && user.getUsername().equals(principal.getName())) {
+            return "redirect:/admin";
+        }
         usersRepository.deleteById(id);
         return "redirect:/admin";
     }
