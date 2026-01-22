@@ -150,6 +150,10 @@
                     </div>
                 </div>
 
+                <div th:if="${error}" style="background: #f44336; color: white; padding: 10px; border-radius: 8px; margin-bottom: 15px; text-align: center;">
+                    <span th:text="${error}"></span>
+                </div>
+
                 <div class="form-row">
                     <label>Username</label>
                     <input type="text" th:field="*{username}" required>
