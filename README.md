@@ -12,7 +12,9 @@
 
 - ”These rules are enforceable and graded
 
-### Why These Rules MatterThese rules exist to:
+### Why These Rules Matter
+
+These rules exist to:
 
 - Prevent merge conflicts
 
