@@ -174,41 +174,33 @@ Admin User:    Login → Home Page → Admin Panel → View Users → Edit / Del
 
 ### 4.1 UserEntity Commit
 
-> **Caption:** GitHub commit showing the addition of UserEntity.java with JPA annotations for the USERS database table.
+> **Caption:** GitHub commit 3c2872a by BrennanBania showing the addition of UserEntity.java with Spring Data annotations (`@Table`, `@Id`) and required fields (id, username, password, role, enabled).
 
-![UserEntity Commit](Photos/placeholder-userentity-commit.png)
-
-<!-- STUDENT 1: Add screenshot of UserEntity commit on GitHub -->
+![UserEntity Commit](Photos/userentity-commit.png)
 
 ---
 
 ### 4.2 UsersRepository Commit
 
-> **Caption:** GitHub commit showing UsersRepository.java extending CrudRepository with the findByUsername custom query method.
+> **Caption:** GitHub commit 370d59b by BrennanBania showing the addition of UsersRepository.java interface for user data access.
 
-![UsersRepository Commit](Photos/placeholder-usersrepo-commit.png)
-
-<!-- STUDENT 1: Add screenshot of UsersRepository commit on GitHub -->
+![UsersRepository Commit](Photos/usersrepo-commit.png)
 
 ---
 
-### 4.3 Spring Security Configuration Commit
+### 4.3 Spring Security Integration Commit
 
-> **Caption:** GitHub commit showing SecurityConfig.java with Spring Security configuration including UserDetailsService, BCrypt encoder, and route protection rules.
+> **Caption:** GitHub commit 5e02e37 by BrennanBania showing UsersDetailsService.java implementing Spring Security's UserDetailsService interface with loadUserByUsername method, and UsersRepository.java with the findByUsername custom query.
 
-![Security Config Commit](Photos/placeholder-security-commit.png)
-
-<!-- STUDENT 1: Add screenshot of SecurityConfig commit on GitHub -->
+![Security Integration Commit](Photos/security-commit.png)
 
 ---
 
 ### 4.4 Controllers Commit
 
-> **Caption:** GitHub commit showing AuthController.java and UserAdminController.java with routes for authentication and admin user management.
+> **Caption:** GitHub commit 02c59e0 by BrennanBania showing UserAdminController.java with spec-compliant routes for admin user management including showAdminPanel, editUser, updateUser, confirmDelete, deleteUser, and toggleUserStatus methods.
 
-![Controllers Commit](Photos/placeholder-controllers-commit.png)
-
-<!-- STUDENT 1: Add screenshot of Controllers commit on GitHub -->
+![Controllers Commit](Photos/controllers-commit.png)
 
 ---
 
