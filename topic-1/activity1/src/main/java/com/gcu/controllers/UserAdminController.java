@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gcu.data.UsersRepository;
 import com.gcu.models.UserEntity;
 
 @Controller
-@RequestMapping("/admin")
-public class AdminController {
+@RequestMapping("/admin/users")
+public class UserAdminController {
 
     @Autowired
     private UsersRepository usersRepository;
@@ -25,20 +26,23 @@ public class AdminController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    // GET /admin/users - Display list of users
     @GetMapping("")
     public String showAdminPanel(Model model) {
         model.addAttribute("users", usersRepository.findAll());
         return "admin";
     }
 
-    @GetMapping("/editUser/{id}")
+    // GET /admin/users/edit/{id} - Edit user role and enabled status
+    @GetMapping("/edit/{id}")
     public String editUser(@PathVariable("id") int id, Model model) {
         UserEntity user = usersRepository.findById(id).orElse(null);
         model.addAttribute("user", user);
         return "editUser";
     }
 
-    @PostMapping("/updateUser")
+    // POST /admin/users/edit - Submit user edit
+    @PostMapping("/edit")
     public String updateUser(@ModelAttribute UserEntity user, Principal principal, Model model) {
         UserEntity existingUser = usersRepository.findById(user.getId()).orElse(null);
         if (existingUser != null) {
@@ -59,34 +63,26 @@ public class AdminController {
             }
             usersRepository.save(existingUser);
         }
-        return "redirect:/admin";
+        return "redirect:/admin/users";
     }
 
-    @GetMapping("/confirmDelete/{id}")
+    // GET /admin/users/delete/{id} - Confirm delete
+    @GetMapping("/delete/{id}")
     public String confirmDelete(@PathVariable("id") int id, Model model) {
         UserEntity user = usersRepository.findById(id).orElse(null);
         model.addAttribute("user", user);
         return "confirmDelete";
     }
 
-    @GetMapping("/deleteUser/{id}")
-    public String deleteUser(@PathVariable("id") int id, Principal principal) {
+    // POST /admin/users/delete - Submit delete
+    @PostMapping("/delete")
+    public String deleteUser(@RequestParam("id") int id, Principal principal) {
         UserEntity user = usersRepository.findById(id).orElse(null);
         // Prevent admin from deleting themselves
         if (user != null && user.getUsername().equals(principal.getName())) {
-            return "redirect:/admin";
+            return "redirect:/admin/users";
         }
         usersRepository.deleteById(id);
-        return "redirect:/admin";
-    }
-
-    @GetMapping("/toggleUser/{id}")
-    public String toggleUserStatus(@PathVariable("id") int id) {
-        UserEntity user = usersRepository.findById(id).orElse(null);
-        if (user != null) {
-            user.setEnabled(!user.isEnabled());
-            usersRepository.save(user);
-        }
-        return "redirect:/admin";
+        return "redirect:/admin/users";
     }
 }

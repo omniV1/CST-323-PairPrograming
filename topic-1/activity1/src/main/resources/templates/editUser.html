@@ -248,7 +248,7 @@
         </div>
         <div class="nav-menu" id="navMenu">
             <a th:href="@{/orders}" class="nav-link"><i class="bi bi-box-seam"></i> Inventory</a>
-            <a th:href="@{/admin}" class="nav-link" sec:authorize="hasRole('ADMIN')"><i class="bi bi-gear"></i> Admin</a>
+            <a th:href="@{/admin/users}" class="nav-link" sec:authorize="hasAuthority('ADMIN')"><i class="bi bi-gear"></i> Admin</a>
             <div class="menu-divider"></div>
             <form th:action="@{/logout}" method="post" style="margin: 0;">
                 <button type="submit" class="logout-btn"><i class="bi bi-box-arrow-right"></i> Logout</button>
@@ -272,7 +272,7 @@
             <div th:if="${error}" class="error-message">
                 <span th:text="${error}"></span>
             </div>
-            <form th:action="@{/admin/updateUser}" method="post" th:object="${user}">
+            <form th:action="@{/admin/users/edit}" method="post" th:object="${user}">
                 <input type="hidden" th:field="*{id}"/>
 
                 <div class="user-avatar-section">
@@ -305,7 +305,7 @@
                 </div>
 
                 <div class="button-row">
-                    <a th:href="@{/admin/confirmDelete/{id}(id=${user.id})}" class="btn btn-delete">Delete</a>
+                    <a th:href="@{/admin/users/delete/{id}(id=${user.id})}" class="btn btn-delete">Delete</a>
                     <button type="submit" class="btn btn-update">Update</button>
                 </div>
             </form>

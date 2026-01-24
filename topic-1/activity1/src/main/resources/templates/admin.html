@@ -256,7 +256,7 @@
         </div>
         <div class="nav-menu" id="navMenu">
             <a th:href="@{/orders}" class="nav-link"><i class="bi bi-box-seam"></i> Inventory</a>
-            <a th:href="@{/admin}" class="nav-link" sec:authorize="hasRole('ADMIN')"><i class="bi bi-gear"></i> Admin</a>
+            <a th:href="@{/admin/users}" class="nav-link" sec:authorize="hasAuthority('ADMIN')"><i class="bi bi-gear"></i> Admin</a>
             <div class="menu-divider"></div>
             <form th:action="@{/logout}" method="post" style="margin: 0;">
                 <button type="submit" class="logout-btn"><i class="bi bi-box-arrow-right"></i> Logout</button>
@@ -301,12 +301,8 @@
                     </div>
                 </div>
                 <div class="user-actions">
-                    <a th:href="@{/admin/editUser/{id}(id=${user.id})}" class="action-btn">Edit</a>
-                    <a th:href="@{/admin/deleteUser/{id}(id=${user.id})}" class="action-btn" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
-                    <span class="status-label">Status</span>
-                    <a th:href="@{/admin/toggleUser/{id}(id=${user.id})}" style="text-decoration: none;">
-                        <div th:classappend="${user.enabled} ? 'status-active' : 'status-inactive'" class="status-indicator"></div>
-                    </a>
+                    <a th:href="@{/admin/users/edit/{id}(id=${user.id})}" class="action-btn">Edit</a>
+                    <a th:href="@{/admin/users/delete/{id}(id=${user.id})}" class="action-btn">Delete</a>
                 </div>
             </div>
         </div>
