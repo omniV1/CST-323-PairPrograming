@@ -28,12 +28,13 @@ public class SecurityConfig {
         http
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/users/register", "/users/processRegister", "/users/login").permitAll()
+                .requestMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form
                 .loginPage("/users/login")
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/orders", true)
+                .defaultSuccessUrl("/", true)
                 .permitAll()
             )
             .logout(logout -> logout

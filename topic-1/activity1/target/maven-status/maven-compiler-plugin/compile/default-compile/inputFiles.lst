@@ -3,12 +3,14 @@
 /run/media/omniv/T7/CST-323-PairPrograming/topic-1/activity1/src/main/java/com/gcu/data/DataAccessInterface.java
 /run/media/omniv/T7/CST-323-PairPrograming/topic-1/activity1/src/main/java/com/gcu/data/UsersDetailsService.java
 /run/media/omniv/T7/CST-323-PairPrograming/topic-1/activity1/src/main/java/com/gcu/controllers/OrdersController.java
+/run/media/omniv/T7/CST-323-PairPrograming/topic-1/activity1/src/main/java/com/gcu/controllers/HomeController.java
 /run/media/omniv/T7/CST-323-PairPrograming/topic-1/activity1/src/main/java/com/gcu/config/SecurityConfig.java
 /run/media/omniv/T7/CST-323-PairPrograming/topic-1/activity1/src/main/java/com/gcu/controllers/UsersController.java
 /run/media/omniv/T7/CST-323-PairPrograming/topic-1/activity1/src/main/java/com/gcu/data/OrdersDataService.java
 /run/media/omniv/T7/CST-323-PairPrograming/topic-1/activity1/src/main/java/com/gcu/data/OrdersRepository.java
 /run/media/omniv/T7/CST-323-PairPrograming/topic-1/activity1/src/main/java/com/gcu/models/UserEntity.java
 /run/media/omniv/T7/CST-323-PairPrograming/topic-1/activity1/src/main/java/com/gcu/App.java
+/run/media/omniv/T7/CST-323-PairPrograming/topic-1/activity1/src/main/java/com/gcu/controllers/AdminController.java
 /run/media/omniv/T7/CST-323-PairPrograming/topic-1/activity1/src/main/java/com/gcu/models/OrderModel.java
 /run/media/omniv/T7/CST-323-PairPrograming/topic-1/activity1/src/main/java/com/gcu/models/OrderEntity.java
 /run/media/omniv/T7/CST-323-PairPrograming/topic-1/activity1/src/main/java/com/gcu/data/UsersRepository.java
