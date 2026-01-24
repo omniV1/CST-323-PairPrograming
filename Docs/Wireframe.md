@@ -1,167 +1,134 @@
-### Owen Lindsey & Brennan Bania
-### Professor Sluiter
-### CST-323
-### Date (ddmmyy)
+# Wireframes
+
+## Orders4U Application
 
 ---
 
-# Wireframes
+|                |                              |
+| -------------- | ---------------------------- |
+| **Authors**    | Owen Lindsey & Brennan Bania |
+| **Course**     | CST-323                      |
+| **Instructor** | Professor Sluiter            |
+| **Date**       | 23 January 2026              |
+
+---
+
+## Document Purpose
+
+This document contains wireframe specifications for each page in the Orders4U application. Wireframes define layout structure, form fields, buttons, and expected behavior for frontend implementation.
+
+---
+
+## Table of Contents
+
+- [[#Site Map Overview]]
+- [[#1. login.html]]
+- [[#2. register.html]]
+- [[#3. admin.html]]
+- [[#4. editUser.html]]
+- [[#5. confirmDelete.html]]
+- [[#Role-Based Navigation]]
+
+<div style="page-break-after: always;"></div>
+
+---
 
 ## Site Map Overview
 
 ![[CST-323PairProgramming-Design.png]]
 
+<div style="page-break-after: always;"></div>
+
 ---
 
 ## 1. login.html
 
-### Title
-- "Login" - centered at top of page
+Centered login form with "Login" title. Displays error messages below the form when authentication fails.
 
-### Main Sections
-- Header with page title
-- Login form (centered)
-- Navigation link to registration
+| Field    | Type     | Validation |
+| -------- | -------- | ---------- |
+| Username | Text     | Required   |
+| Password | Password | Required   |
 
-### Forms
-| Field    | Type     | Validation                    |
-|----------|----------|-------------------------------|
-| Username | Text     | Required                      |
-| Password | Password | Required                      |
+| Button   | Action                            |
+| -------- | --------------------------------- |
+| Submit   | Authenticate user credentials     |
+| Register | Link to register.html             |
 
-### Buttons
-| Button   | Action                                          |
-|----------|-------------------------------------------------|
-| Submit   | Authenticate user credentials                   |
-| Register | Navigate to register.html (link below form)     |
 
-### Error/Message Areas
-- Error message displayed below form: "User not found. Verify username or password."
-- Field-level validation errors displayed inline
 
 ---
 
 ## 2. register.html
 
-### Title
-- "Register" - centered at top of page
+Centered registration form with "Register" title. Validates password match and displays inline errors.
 
-### Main Sections
-- Header with page title
-- Registration form (centered)
-- Navigation link to login
+| Field            | Type     | Validation                    |
+| ---------------- | -------- | ----------------------------- |
+| Username         | Text     | Required, alphanumeric        |
+| Password         | Password | Required, 8+ characters       |
+| Confirm Password | Password | Required, must match password |
 
-### Forms
-| Field            | Type     | Validation                              |
-|------------------|----------|-----------------------------------------|
-| Username         | Text     | Required, alphanumeric, length limits   |
-| Password         | Password | Required, 8-25 characters               |
-| Confirm Password | Password | Required, must match Password field     |
+| Button | Action                |
+| ------ | --------------------- |
+| Submit | Create new account    |
+| Login  | Link to login.html    |
 
-### Buttons
-| Button | Action                                      |
-|--------|---------------------------------------------|
-| Submit | Create new user account                     |
-| Login  | Navigate to login.html (link below form)    |
 
-### Error/Message Areas
-- Password mismatch error: "Passwords do not match"
-- Username constraint error: "Username must be alphanumeric"
-- Length constraint error: "Password must be 8-25 characters"
-- Success message on redirect
 
 ---
 
-## 3. userAdmin.html
+## 3. admin.html
 
-### Title
-- "Admin Panel" - displayed in header
+Admin panel displaying all users in a list/grid format. Each row shows avatar, username, role, and status with action buttons.
 
-### Main Sections
-- Header with title and admin info
-- "Users" section header
-- User list table/grid
-- Each user row displays: Avatar, Username, Role, Status
+| Button | Location     | Action                      |
+| ------ | ------------ | --------------------------- |
+| Edit   | Per user row | Navigate to editUser.html   |
+| Delete | Per user row | Navigate to confirmDelete.html |
+| Status | Per user row | Toggle enabled/disabled     |
 
-### Forms
-- No forms on this page (display only)
-
-### Buttons
-| Button | Location      | Action                              |
-|--------|---------------|-------------------------------------|
-| Edit   | Per user row  | Navigate to editUser.html           |
-| Delete | Per user row  | Navigate to confirmDeleteUser.html  |
-
-### Error/Message Areas
-- Success message after user edit: "User updated successfully"
-- Success message after user delete: "User deleted successfully"
-- Empty state message if no users exist
+<div style="page-break-after: always;"></div>
 
 ---
 
 ## 4. editUser.html
 
-### Title
-- "User1" (or username) - displayed in header with user avatar
+Edit form for modifying user details. Header displays user avatar and username.
 
-### Main Sections
-- Header with user avatar and username
-- User profile details section
-- Edit form fields
-- Action buttons
+| Field    | Type     | Validation        |
+| -------- | -------- | ----------------- |
+| Username | Text     | Required          |
+| Password | Password | Optional          |
+| Role     | Dropdown | Admin / User      |
+| Status   | Checkbox | Enabled/Disabled  |
 
-### Forms
-| Field    | Type     | Validation         |
-|----------|----------|--------------------|
-| Username | Text     | Required           |
-| Role     | Dropdown | Admin / User       |
-| Status   | Dropdown | Active / Inactive  |
+| Button | Action                              |
+| ------ | ----------------------------------- |
+| Update | Save changes, return to admin panel |
+| Delete | Navigate to confirmDelete.html      |
 
-### Buttons
-| Button         | Action                                    |
-|----------------|-------------------------------------------|
-| Change Username| Apply username change                     |
-| Change Role    | Apply role change                         |
-| Change Status  | Apply status change                       |
-| Save / Back    | Save all changes and return to admin list |
 
-### Error/Message Areas
-- Validation errors displayed inline
-- Success message: "Changes saved successfully"
-- Error message: "Failed to update user"
 
 ---
 
-## 5. confirmDeleteUser.html
+## 5. confirmDelete.html
 
-### Title
-- "User1" (or username) - displayed in header with user avatar
+Delete confirmation dialog displaying user info and warning message.
 
-### Main Sections
-- Header with user avatar and username
-- User profile summary
-- Delete confirmation dialog box
+| Button  | Action                            |
+| ------- | --------------------------------- |
+| Confirm | Delete user, return to admin list |
+| Cancel  | Return to admin list              |
 
-### Forms
-- No editable form fields (confirmation only)
+Warning displayed: "This action cannot be undone"
 
-### Buttons
-| Button  | Action                                      |
-|---------|---------------------------------------------|
-| Confirm | Delete user and return to admin list        |
-| Cancel  | Return to admin list without deleting       |
-
-### Error/Message Areas
-- **Warning message (prominent):** "Delete this user?"
-- **Destructive action warning:** "WARNING: This action cannot be undone"
-- Error message if deletion fails: "Failed to delete user"
 
 ---
 
 ## Role-Based Navigation
 
-| User Role | After Login Redirect |
-|-----------|---------------------|
-| Admin     | userAdmin.html      |
-| User      | Inventory page      |
-
+| User Role | Post-Login Redirect |
+| --------- | ------------------- |
+| Admin     | Home (with Admin Panel access) |
+| User      | Home (Inventory only) |
