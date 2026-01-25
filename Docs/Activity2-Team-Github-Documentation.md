@@ -9,7 +9,7 @@
 | **Authors**    | Owen Lindsey & Brennan Bania |
 | **Course**     | CST-323                      |
 | **Instructor** | Professor Sluiter            |
-| **Date**       | 24 January 2026              |
+| **Date**       | 25 January 2026              |
 
 ## GitHub Repository Link
 
