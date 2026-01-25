@@ -11,6 +11,14 @@
 | **Instructor** | Professor Sluiter            |
 | **Date**       | 24 January 2026              |
 
+## GitHub Repository Link
+
+**Repository URL:** [https://github.com/omniV1/CST-323-PairPrograming](https://github.com/omniV1/CST-323-PairPrograming)
+
+**Contributors:**
+- @omniV1 — Owen Lindsey (Student 2 - Frontend & Design)
+- @BrennanBania — Brennan Bania (Student 1 - Backend)
+
 ---
 
 ## Table of Contents
@@ -208,9 +216,8 @@ Admin User:    Login → Home Page → Admin Panel → View Users → Edit / Del
 
 > **Caption:** Terminal output showing all backend tests passing after running `mvn test`. Tests verify repository behavior, security rules, and password encoding.
 
-![Backend Tests](Photos/placeholder-backend-tests.png)
+![Backend Tests](Photos/backend-tests.png)
 
-<!-- STUDENT 1: Add screenshot of passing backend tests -->
 
 ---
 
@@ -218,9 +225,8 @@ Admin User:    Login → Home Page → Admin Panel → View Users → Edit / Del
 
 > **Caption:** Terminal showing Spring Boot application started successfully without errors.
 
-![App Running](Photos/placeholder-app-running.png)
+![App Running](Photos/app-running.png)
 
-<!-- STUDENT 1: Add screenshot of application running -->
 
 ---
 
@@ -228,9 +234,7 @@ Admin User:    Login → Home Page → Admin Panel → View Users → Edit / Del
 
 > **Caption:** Browser showing redirect to login page when attempting to access /admin/users while unauthenticated. This confirms Spring Security route protection is working correctly.
 
-![Security Redirect](Photos/placeholder-security-redirect.png)
-
-<!-- STUDENT 1: Add screenshot of security redirect to login -->
+![Security Redirect](Photos/security-redirect.png)
 
 ---
 
@@ -332,7 +336,7 @@ This design ensures users only see options they have permission to access, preve
 
 > **Caption:** Maven test output showing all backend tests pass, including repository tests, security tests, and controller tests.
 
-![Test Results](Photos/placeholder-test-results.png)
+![Test Results](Photos/backend-tests.png)
 
 <!-- STUDENT 1: Add screenshot of mvn test output showing all tests passing -->
 
@@ -528,23 +532,7 @@ If starting over, we would spend more time on the design document phase before a
 
 We would also establish a regular sync schedule rather than ad-hoc communication. Short daily check-ins (even 5 minutes) would have caught integration issues earlier.
 
----
 
-## Submission Checklist
-
-- [x] Repository shared and accessible
-- [x] Feature branches used (deleted after merge per professional workflow)
-- [x] Pull requests created (11 PRs — see Section 2.1)
-- [x] Application runs without errors (see Section 5 screenshots)
-- [ ] Tests pass *(Student 1)*
-- [x] All screenshots captured and captioned (Student 2 complete)
-- [x] AI exploration completed with follow-up questions
-- [x] Reflection written (5-8 sentences per section)
-- [ ] Documentation file uploaded
-
-**Branch Note:** Feature branches were deleted after successful merges, following professional Git practices. PR history in Section 2.1 provides complete evidence of branch-based development workflow.
-
----
 
 ## GitHub Repository Link
 
@@ -556,4 +544,3 @@ We would also establish a regular sync schedule rather than ad-hoc communication
 
 ---
 
-*This document demonstrates professional collaboration, documentation, and development workflow practices for the CST-323 Activity 2 assignment.*
