@@ -397,9 +397,9 @@ Application functionality verified:
 - Created UsersController for login/register handling
 - Created UserAdminController for user management
 
-![Backend PR](Photos/placeholder-backend-pr.png)
+![Backend PR](Photos/backend-pr.png)
 
-<!-- STUDENT 1: Add screenshot of PR #4 details page -->
+
 
 ---
 
