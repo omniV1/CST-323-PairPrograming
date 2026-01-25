@@ -1,12 +1,12 @@
 com/gcu/data/OrdersRepository.class
 com/gcu/App.class
 com/gcu/models/UserEntity.class
-com/gcu/controllers/AdminController.class
 com/gcu/controllers/OrdersController.class
 com/gcu/controllers/UsersController.class
 com/gcu/data/OrdersDataService.class
 com/gcu/models/OrderModel.class
 com/gcu/data/DataAccessInterface.class
+com/gcu/controllers/UserAdminController.class
 com/gcu/controllers/HomeController.class
 com/gcu/data/UsersDetailsService.class
 com/gcu/models/OrderEntity.class

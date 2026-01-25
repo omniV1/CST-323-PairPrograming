@@ -224,7 +224,7 @@
         <div class="nav-menu" id="navMenu">
             <a th:href="@{/}" class="nav-link"><i class="bi bi-house"></i> Home</a>
             <a th:href="@{/orders}" class="nav-link"><i class="bi bi-box-seam"></i> Inventory</a>
-            <a th:href="@{/admin}" class="nav-link" sec:authorize="hasRole('ADMIN')"><i class="bi bi-gear"></i> Admin</a>
+            <a th:href="@{/admin/users}" class="nav-link" sec:authorize="hasAuthority('ADMIN')"><i class="bi bi-gear"></i> Admin</a>
             <div class="menu-divider"></div>
             <form th:action="@{/logout}" method="post" style="margin: 0;">
                 <button type="submit" class="logout-btn"><i class="bi bi-box-arrow-right"></i> Logout</button>
@@ -257,14 +257,6 @@
                 </div>
                 <div class="card-title">Inventory</div>
                 <div class="card-description">View, add, edit, and manage your orders and products.</div>
-            </a>
-
-            <a th:href="@{/admin}" class="feature-card" sec:authorize="hasRole('ADMIN')">
-                <div class="card-icon admin">
-                    <i class="bi bi-people"></i>
-                </div>
-                <div class="card-title">Admin Panel</div>
-                <div class="card-description">Manage users, roles, and system settings.</div>
             </a>
         </div>
     </div>
